@@ -1,0 +1,108 @@
+@use "_Colors.scss" as mycolor;
+@use "_Colors2.scss" as mycolor2;
+
+// @import "_Colors.scss";
+// @import "_Colors2.scss";
+
+html {
+  ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    background-color: #080808;
+  }
+
+  ::-webkit-scrollbar {
+    width: 12px;
+    background-color: #f5f5f5;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #ff0000;
+  }
+}
+
+body {
+  margin: 0px;
+  scrollbar-color: red green;
+  padding: 0px;
+  background-color: mycolor.$color6;
+
+  h1 {
+    color: mycolor.$color2;
+  }
+  p {
+    color: mycolor.$color3;
+  }
+}
+
+.productCard {
+  border: 2px solid black;
+  ~ div {
+    > p {
+      color: rgb(212, 0, 255) !important;
+    }
+  }
+}
+.bomb-button {
+  > button {
+    background-color: mycolor.$btn-bgcolor7;
+    color: mycolor.$btn-color7;
+    padding: 1rem 2rem;
+    border: none;
+    cursor: pointer;
+  }
+  > p {
+    @extend button;
+    text-align: center;
+  }
+}
+
+%custom-template {
+  background-color: mycolor.$color3;
+  color: #f5f5f5;
+  display: block;
+  margin: 20px 0;
+  padding: 10px 0;
+}
+
+.p1 {
+  @extend %custom-template;
+}
+.p2 {
+  @extend %custom-template;
+}
+.p3 {
+  @extend %custom-template;
+}
+
+@mixin custom-func($textcolor: black, $bgcolor: red) {
+  background-color: $bgcolor;
+  color: $textcolor;
+  margin: 20px 0;
+  padding: 10px 0;
+  display: block;
+}
+
+.p4 {
+  @include custom-func;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+.p5 {
+  @include custom-func(red, green);
+}
+.p6 {
+  @include custom-func(red, green);
+}
+
+.custom2 {
+  label {
+    &::first-letter {
+      font-size: 30px;
+    }
+  }
+}
